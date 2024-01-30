@@ -15,7 +15,7 @@ const navLinks =[
     },
     {
         path:'/services',
-        display:'Consult Online'
+        display:'Services'
     },
     {
         path:'/contact',
