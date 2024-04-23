@@ -29,7 +29,7 @@ const Testimonial = () =>{
                         <div className="flex items-center gap-[13px]">
                             <img src={patientAvatar} />
                             <div>
-                                <h4 className="text-[18px] leading-[30px] font-semibold text-headingColor">Muhibur Rahman</h4>
+                                <h4 className="text-[18px] leading-[30px] font-semibold text-headingColor">Goutam Sachdev</h4>
                                 <div className="flex items-center gap-[2px] ">
                                     <HiStar className="text-yellowColor w-[18px] h-5 "/>
                                     <HiStar className="text-yellowColor w-[18px] h-5 "/>
@@ -47,7 +47,7 @@ const Testimonial = () =>{
                         <div className="flex items-center gap-[13px]">
                             <img src={patientAvatar} />
                             <div>
-                                <h4 className="text-[18px] leading-[30px] font-semibold text-headingColor">Muhibur Rahman</h4>
+                                <h4 className="text-[18px] leading-[30px] font-semibold text-headingColor">Ahmar Ali</h4>
                                 <div className="flex items-center gap-[2px] ">
                                     <HiStar className="text-yellowColor w-[18px] h-5 "/>
                                     <HiStar className="text-yellowColor w-[18px] h-5 "/>
@@ -65,7 +65,7 @@ const Testimonial = () =>{
                         <div className="flex items-center gap-[13px]">
                             <img src={patientAvatar} />
                             <div>
-                                <h4 className="text-[18px] leading-[30px] font-semibold text-headingColor">Muhibur Rahman</h4>
+                                <h4 className="text-[18px] leading-[30px] font-semibold text-headingColor">Tayaba Aziz</h4>
                                 <div className="flex items-center gap-[2px] ">
                                     <HiStar className="text-yellowColor w-[18px] h-5 "/>
                                     <HiStar className="text-yellowColor w-[18px] h-5 "/>

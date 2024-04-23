@@ -1,0 +1,6 @@
+//How to start?
+cd frontend
+npm run dev
+
+//install stripe
+npm i stripe

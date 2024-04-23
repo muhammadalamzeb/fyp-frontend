@@ -1,12 +1,12 @@
 import React from "react";
-import heroImg01 from '../assets/images/hero-img01.png';
-import heroImg02 from '../assets/images/hero-img02.png';
-import heroImg03 from '../assets/images/hero-img03.png'
+import heroImg01 from "../assets/images/hero-img01.jpg";
+import heroImg02 from '../assets/images/hero-img02.jpg';
+import heroImg03 from '../assets/images/hero-img03.jpg'
 import icon01 from '../assets/images/icon01.png'
 import icon02 from '../assets/images/icon02.png'
 import icon03 from '../assets/images/icon03.png'
-import featureImg from '../assets/images/feature-img.png'
-import faqImg from '../assets/images/faq-img.png';
+import featureImg from '../assets/images/feature-img.jpg'
+import faqImg from '../assets/images/faq-img.jpg';
 import videoIcon from '../assets/images/video-icon.png'
 import avatarIcon from '../assets/images/avatar-icon.png'
 import { Link } from "react-router-dom";
@@ -68,11 +68,12 @@ const Home = () =>{
 
                             <div className="flex gap-[30px] justify-end">
                                 <div>
-                                    <img className="w-full" src={heroImg01} />
+                                <img className="w-full rounded-lg" src={heroImg01} style={{ width: '370px', height: '524px', objectFit: 'cover' }} />
+
                                 </div>
                                 <div className="mt-[30px]">
-                                    <img className="w-full mb-[30px]" src={heroImg02} />
-                                    <img className="w-full" src={heroImg03} />
+                                    <img className="w-full mb-[30px] rounded-lg" src={heroImg02} style={{ width: '270px', height: '270px', objectFit: 'cover' }} />
+                                    <img className="w-full rounded-lg" src={heroImg03} style={{ width: '270px', height: '270px', objectFit: 'cover' }} />
                                 </div>
                             </div>
 
@@ -172,7 +173,7 @@ const Home = () =>{
                             </div>
                             {/*=============== Feature IMG ==================== */}
                             <div className="relative z-10 xl:w-[770px] flex justify-end mt-[50px] lg:mt-0">
-                                <img src={featureImg} className="w-3/4" />
+                                <img src={featureImg} className="w-3/4 rounded-lg" style={{ width: '470px', height: '470px', objectFit: 'cover' }} />
 
                                 <div className="w-[150px] lg:w-[248px] bg-white absolute bottom-[50px] left-0 md:bottom-[100px] md:left-5 z-20 p-2 pb-3 lg:pt-4 lg:px-4 lg:pb-[26px] rounded-[10px]">
                                     
@@ -220,7 +221,7 @@ const Home = () =>{
                 <section>
                     <div className="container">
                         <div className="flex justify-between gap-[50px] lg:gap-0">
-                            <div className="w-1/2 hidden md:block"><img src={faqImg} /></div>
+                            <div className="w-1/2 hidden md:block"><img className="rounded-lg" src={faqImg} style={{ width: '470px', height: '675px', objectFit: 'cover' }} /></div>
                             <div className="w-full md:w-1/2">
                                 <h2 className="heading">Most frequently asked questions by our beloved patients.</h2>
                                 <FaqList />

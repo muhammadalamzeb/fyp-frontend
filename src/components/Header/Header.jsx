@@ -31,15 +31,15 @@ const Header = () =>{
     const handleStickyHeader = ()=> {
         window.addEventListener('scroll', ()=>{
             if(document.body.scrollTop > 80 || document.documentElement.scrollTop > 80){
-                headerRef.current.classList.add('sticky__header')
+                headerRef?.current?.classList?.add("sticky__header")
             }else{
-                headerRef.current.classList.remove('sticky__header')
+                headerRef?.current?.classList?.remove("sticky__header")
             }
         })
     }
 
     useEffect(()=>{
-        handleStickyHeader()
+        handleStickyHeader();
 
         return ()=> window.removeEventListener('scroll', handleStickyHeader)
     })
@@ -53,10 +53,10 @@ const Header = () =>{
                     {/*========= logo ========= */}
                     <Link to={'/home'}>
                     <div style={{ 
-  maxWidth: '77px', // Set your preferred maximum width
-  maxHeight: 'auto', // Allow the height to adjust proportionally
-  //margin: '0 auto', // Center the image horizontally
-}}>
+                        maxWidth: '72px', // Set your preferred maximum width
+                        maxHeight: 'auto', // Allow the height to adjust proportionally
+                        //margin: '0 auto', // Center the image horizontally
+                    }}>
                         <img src={logo} alt="Logo"/>
                     </div>
                     </Link>
