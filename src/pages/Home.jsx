@@ -39,7 +39,7 @@ const Home = () =>{
                                     Say goodbye to appointment hassles, and welcome a new era in convenient and empowering healthcare.
                                     </p>
 
-                                    <button className="btn">Request an Appointment</button>
+                                    <Link to='/doctors'><button className="btn">Request an Appointment</button></Link>
                                 </div> 
 
                                 {/*===========Hero Counter =========== */}                               

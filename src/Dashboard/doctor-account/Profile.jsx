@@ -47,34 +47,41 @@ const Profile = (doctorData) =>{
         console.log(data);
         setFormData({...formData, photo:data?.url})
     }
-    const updateProfileHandler = async e =>{
+    const updateProfileHandler = async e => {
         e.preventDefault();
+        
+        const data = doctorData.doctorData;
 
         try {
-            const res = await fetch(`${BASE_URL}/doctors/${doctorData._id}`,{
-                method:'PUT',
-                headers:{
-                    'content-type':'application/json',
-                    Authorization:`Bearer ${token}`
+            const res = await fetch(`${BASE_URL}/doctors/${data._id}`, {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json',
+                    Authorization: `Bearer ${token}`
                 },
-                body:JSON.stringify(formData)
-            })
-
-            const result = await res.json()
-            if(!res.ok){
-                throw Error(result.message)
+                body: JSON.stringify(formData)
+            });
+    
+            const result = await res.json();
+    
+            if (!res.ok) {
+                throw Error(result.message || 'Failed to update profile'); // Added default message
             }
-
+    
             toast.success(result.message);
         } catch (err) {
-            toast.error(err.message)
+            toast.error(err.message);
         }
-
     };
+    
     //reusable function for adding item
-    const addItem= (key, item)=>{
-        setFormData(prevFormData=>({...prevFormData, [key]:[...prevFormData[key], item]}))
+    const addItem = (key, item) => {
+        setFormData(prevFormData => ({
+            ...prevFormData,
+            [key]: Array.isArray(prevFormData[key]) ? [...prevFormData[key], item] : [item]
+        }));
     };
+    
 
     //reusable input change function
     const handleReusableInputChangeFunc = (key, index, event)=>{
@@ -96,7 +103,7 @@ const Profile = (doctorData) =>{
     const addQualification = e=>{
         e.preventDefault();
         addItem('qualifications', {
-            startDate:"",endingDate:"", degree:"PHD", university:"SIBAU",
+            startDate:"",endingDate:"", degree:"", university:"",
         })
     };
 
@@ -114,7 +121,7 @@ const Profile = (doctorData) =>{
     const addExperience = e=>{
         e.preventDefault();
         addItem('experiences', 
-            {startDate:"",endingDate:"", position:"Senior Surgeon", hospital:"Hira Hospital"},
+            {startDate:"",endingDate:"", position:"", hospital:"",},
         )
     };
 
@@ -224,36 +231,37 @@ const Profile = (doctorData) =>{
                     <button onClick={addQualification} className="bg-[#000] py-2 px-5 rounded text-white h-fit cursor-pointer">Add Qualification</button>
                 </div>
                 <div className="mb-5">
-                    <p className="form__label">Experiences*</p>
-                    {formData.experiences?.map((item,index)=> (
-                    <div key={index}>
-                        <div>
-                            <div className="grid grid-cols-2 gap-5 mt-2">
-                                <div>
-                                    <p className="form__label">Starting Date*</p>
-                                    <input onChange={e=>handleExperienceChange(e,index)} type="date" name="startingDate" value={item.startingDate} className="form__input" />
-                                </div>
-                                <div>
-                                    <p className="form__label">Ending Date*</p>
-                                    <input onChange={e=>handleExperienceChange(e,index)} type="date" name="endingDate" value={item.endingDate} className="form__input" />
-                                </div>
-                            </div>
-                            <div className="grid grid-cols-2 gap-5 mt-5">
-                                <div>
-                                    <p className="form__label">Position*</p>
-                                    <input onChange={e=>handleExperienceChange(e,index)} type="text" name="positoin" value={item.position} className="form__input" />
-                                </div>
-                                <div>
-                                    <p className="form__label">Hospital*</p>
-                                    <input onChange={e=>handleExperienceChange(e,index)} type="text" name="hospital" value={item.hospital} className="form__input" />
-                                </div>
-                            </div>
-                            <button onClick={e=> deleteExperience(e,index)} className="bg-red-600 p-2 rounded-full text-white text-[18px] mt-2 mb-[30px] cursor-pointer"><AiOutlineDelete/></button>
-                        </div>
-                    </div>
-                    ))}
-                    <button onClick={addExperience} className="bg-[#000] py-2 px-5 rounded text-white h-fit cursor-pointer">Add Experience</button>
+    <p className="form__label">Experiences*</p>
+    {formData.experiences?.map((item,index)=> (
+    <div key={index}>
+        <div>
+            <div className="grid grid-cols-2 gap-5 mt-2">
+                <div>
+                    <p className="form__label">Starting Date*</p>
+                    <input onChange={e=>handleExperienceChange(e,index)} type="date" name="startingDate" value={item.startingDate} className="form__input" />
                 </div>
+                <div>
+                    <p className="form__label">Ending Date*</p>
+                    <input onChange={e=>handleExperienceChange(e,index)} type="date" name="endingDate" value={item.endingDate} className="form__input" />
+                </div>
+            </div>
+            <div className="grid grid-cols-2 gap-5 mt-5">
+                <div>
+                    <p className="form__label">Position*</p>
+                    <input onChange={e=>handleExperienceChange(e,index)} type="text" name="position" value={item.position} className="form__input" />
+                </div>
+                <div>
+                    <p className="form__label">Hospital*</p>
+                    <input onChange={e=>handleExperienceChange(e,index)} type="text" name="hospital" value={item.hospital} className="form__input" />
+                </div>
+            </div>
+            <button onClick={e=> deleteExperience(e,index)} className="bg-red-600 p-2 rounded-full text-white text-[18px] mt-2 mb-[30px] cursor-pointer"><AiOutlineDelete/></button>
+        </div>
+    </div>
+    ))}
+    <button onClick={addExperience} className="bg-[#000] py-2 px-5 rounded text-white h-fit cursor-pointer">Add Experience</button>
+</div>
+
                 <div className="mb-5">
                     <p className="form__label">Time Slots*</p>
                     {formData.timeSlots?.map((item,index)=> (

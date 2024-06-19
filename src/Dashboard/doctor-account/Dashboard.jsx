@@ -12,6 +12,7 @@ import Appointments from "./Appointments";
 const Dashboard = () =>{
     const {data, loading, error} = useGetProfile(`${BASE_URL}/doctors/profile/me`);
     const [tab,setTab] = useState('overview')
+    console.log("rating",data)
     return(
         <section>
             <div className="max-w-[1170px] px-5 mx-auto ">
@@ -58,7 +59,9 @@ const Dashboard = () =>{
                                         <div className="flex items-center gap-[6px]">
                                             <span className="flex items-center gap-[6px] text-headingColor text-[14px] leading-5 lg:text-[16px] lg:leading-6 font-semibold">
                                                 <img src={starIcon} alt="" />
-                                                {data.averageRating}
+                                                {/* here */}
+                                                 {data.averageRating}
+                                                
                                             </span>
                                             <span className="text-textColor text-[14px] leading-5 lg:text-[16px] lg:leading-6 font-semibold">
                                                 ({data.totalRating})
@@ -69,12 +72,12 @@ const Dashboard = () =>{
                                         </p>
                                     </div>
                                 </div>
-                                <DoctorAbout name={data.name} about={data.about} qualifications={data.qualifications} experiences={data.experiences} />
+                                <DoctorAbout name={data.name} about={data.about} qualifications={data.qualifications} experiences={data.experiences} phone={data.phone} />
                                 </div>
                                 
                                 }
 
-                                {tab==='appointments' && <Appointments appointments={data.appointments} />}
+                                {tab==='appointments' && <Appointments appointments={data.appointments} doc_name={data.name} doc_email={data.email} doc_number={data.phone} />}
                                 {tab==='settings' && <Profile doctorData={data} />}
                             </div>
                         </div>
