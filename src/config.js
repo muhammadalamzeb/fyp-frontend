@@ -1,2 +1,2 @@
-export const BASE_URL = "http://localhost:3000/api/v1";
+export const BASE_URL = "https://fyp-backend-i-clinic.vercel.app/api/v1";
 export const token = localStorage.getItem("token")
